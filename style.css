@@ -1,0 +1,356 @@
+/* ================= التنسيقات العامة ================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #050914;
+    color: #e2e8f0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* لمنع ظهور شريط التمرير بسبب الخلفية */
+}
+
+/* ================= الخلفية المتحركة 3D ================= */
+.bg-shapes {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background: radial-gradient(circle at center, #0a1128 0%, #02040a 100%);
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.5;
+    animation: float 10s infinite ease-in-out alternate;
+}
+
+.shape1 {
+    width: 300px; height: 300px;
+    background: #00ff88;
+    top: -10%; left: -10%;
+    animation-delay: 0s;
+}
+
+.shape2 {
+    width: 400px; height: 400px;
+    background: #0088ff;
+    bottom: -20%; right: -10%;
+    animation-delay: -5s;
+}
+
+.shape3 {
+    width: 200px; height: 200px;
+    background: #ff0055;
+    top: 40%; left: 50%;
+    animation-duration: 15s;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(30px, 50px) scale(1.2); }
+}
+
+/* ================= الحاوية وتأثير الزجاج (Glassmorphism) ================= */
+.main-container {
+    width: 90%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    padding: 20px 0;
+}
+
+.glass-panel {
+    background: rgba(16, 25, 43, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+}
+
+/* ================= الشعار (Logo) ================= */
+.logo {
+    font-size: 4rem;
+    font-weight: 900;
+    letter-spacing: 5px;
+    color: transparent;
+    -webkit-text-stroke: 2px #00ff88;
+    position: relative;
+    margin-bottom: 40px;
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+    animation: pulseGlow 2s infinite alternate;
+}
+
+@keyframes pulseGlow {
+    0% { text-shadow: 0 0 10px rgba(0, 255, 136, 0.4); }
+    100% { text-shadow: 0 0 30px rgba(0, 255, 136, 0.8), 0 0 50px rgba(0, 255, 136, 0.4); }
+}
+
+/* ================= حقل الإدخال ================= */
+.input-group {
+    width: 100%;
+    position: relative;
+    margin-bottom: 25px;
+}
+
+#userId {
+    width: 100%;
+    padding: 20px;
+    font-size: 1.3rem;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid #1e293b;
+    border-radius: 15px;
+    color: #00ff88;
+    outline: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+}
+
+#userId::placeholder {
+    color: #475569;
+    letter-spacing: 1px;
+    font-weight: normal;
+}
+
+#userId:focus {
+    border-color: #00ff88;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3), inset 0 0 10px rgba(0,0,0,0.8);
+}
+
+/* ================= زر البداية 3D ================= */
+.btn-3d {
+    width: 100%;
+    padding: 20px;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #050914;
+    background: linear-gradient(135deg, #00ff88, #00b35f);
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    position: relative;
+    margin-bottom: 35px;
+    transform-style: preserve-3d;
+    transition: transform 0.1s, box-shadow 0.1s;
+    /* تأثير البعد الثالث */
+    box-shadow: 0 8px 0 #008044, 0 15px 20px rgba(0, 255, 136, 0.4);
+    letter-spacing: 2px;
+}
+
+.btn-3d:active {
+    transform: translateY(8px);
+    box-shadow: 0 0px 0 #008044, 0 5px 10px rgba(0, 255, 136, 0.4);
+}
+
+.btn-3d:hover {
+    filter: brightness(1.1);
+}
+
+/* ================= صندوق الشروط ================= */
+.conditions-box {
+    padding: 25px 20px;
+    text-align: center;
+    line-height: 1.8;
+    font-size: 1rem;
+    color: #94a3b8;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.icon-warning {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    animation: shake 3s infinite;
+}
+
+.highlight {
+    color: #00ff88;
+    font-size: 1.2rem;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+/* ================= قسم كود البرومو ================= */
+.promo-section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    border: 1px dashed #00ff88;
+}
+
+.promo-text {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.promo-code {
+    color: #00ff88;
+    font-size: 1.3rem;
+    margin-right: 5px;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+.btn-copy {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #1e293b;
+    color: #fff;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-copy:hover {
+    background-color: #00ff88;
+    color: #000;
+    border-color: #00ff88;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+}
+
+/* ================= النافذة المنبثقة (Modal) ================= */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(2, 4, 10, 0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-content {
+    width: 90%;
+    max-width: 360px;
+    padding: 40px 20px;
+    text-align: center;
+    transform: scale(0.8);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+/* ================= حالة التحميل ================= */
+.loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.spinner {
+    width: 60px; height: 60px;
+    border: 5px solid rgba(0, 255, 136, 0.1);
+    border-top-color: #00ff88;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+.status-msg {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #00ff88;
+    margin-bottom: 25px;
+    min-height: 30px;
+}
+
+.progress-container {
+    width: 100%;
+    height: 15px;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #1e293b;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #00b35f, #00ff88);
+    border-radius: 10px;
+    transition: width 0.1s linear;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.8);
+}
+
+.progress-text {
+    margin-top: 15px;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+/* ================= حالة الخطأ ================= */
+.error-state {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error-icon {
+    font-size: 4rem;
+    margin-bottom: 15px;
+    text-shadow: 0 0 20px rgba(255, 0, 85, 0.5);
+    animation: popIn 0.5s ease forwards;
+}
+
+.error-msg {
+    font-size: 1.3rem;
+    color: #ff0055;
+    font-weight: bold;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.btn-error {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #ff0055;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 5px 0 #b3003b, 0 10px 20px rgba(255, 0, 85, 0.4);
+    transition: 0.1s;
+}
+
+.btn-error:active {
+    transform: translateY(5px);
+    box-shadow: 0 0px 0 #b3003b, 0 5px 10px rgba(255, 0, 85, 0.4);
+}
+
+@keyframes popIn {
+    0% { transform: scale(0); }
+    80% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
